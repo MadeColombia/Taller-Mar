@@ -16,6 +16,7 @@ public class ObjectClicker : MonoBehaviour
                 if(hit.transform != null)
                 {
                     PrintName(hit.transform.gameObject);
+                    
                 }
             }
         }
