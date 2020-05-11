@@ -11,7 +11,7 @@ public class JugadorPersonajee : MonoBehaviour
     
     void Start()
     {
-        velocidadMovimiento = 40.0f;
+        velocidadMovimiento = 20.0f;
         velocidadRotacion = 200.0f;
         anim = GetComponent<Animator>();
     }
