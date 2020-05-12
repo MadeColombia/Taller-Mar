@@ -9,8 +9,9 @@ using UnityEngine.UI;
 public class guardarPosicion : MonoBehaviour
 {
     public float Posx, Posy, Posz;
-    public Text tx;
+    public Text tx,tx2;
     public List<Vector3> listaPos;
+    Vector3 posPlayer;
     
     void Start()
     {
@@ -22,28 +23,67 @@ public class guardarPosicion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        posPlayer = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-        
-        GuardarDatosPos();
- 
+
+        GuardarDatosPos(posPlayer);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                if (hit.transform != null)
+                {
+                    tx.text = hit.transform.gameObject.name;
+                    tx2.text = "(X: " + PlayerPrefs.GetFloat("PosicionX").ToString() + ", Y: " + PlayerPrefs.GetFloat("PosicionY").ToString() + ", Z: " + PlayerPrefs.GetFloat("PosicionZ").ToString() + ")";
+
+
+                    
+                }
+            }
+
+        }
     }
 
-    public void GuardarDatosPos() 
+    public void GuardarDatosPos(Vector3 posicion) 
 
     {
         
-        PlayerPrefs.SetFloat("PosicionX", transform.position.x);
-        PlayerPrefs.SetFloat("PosicionY", transform.position.y);
-        PlayerPrefs.SetFloat("PosicionZ", transform.position.z);
-        tx.text = "(X: "+PlayerPrefs.GetFloat("PosicionX").ToString() + ", Y: " + PlayerPrefs.GetFloat("PosicionY").ToString() + ", Z: " + PlayerPrefs.GetFloat("PosicionZ").ToString()+")";
+        PlayerPrefs.SetFloat("PosicionX",posicion.x);
+        PlayerPrefs.SetFloat("PosicionY", posicion.y);
+        PlayerPrefs.SetFloat("PosicionZ", posicion.z);
         
         Debug.Log("Datos Guardados Correctamente");
+        //for (float f = 1f; f >= 0; f -= 0.1f)
+        //{
+        //    Color c = tx2.color;
+        //    Color c1 = tx.color;
+        //    c.a = f;
+        //    c1.a = f;
+        //    tx2.color = c;
+        //    tx.color = c;
+        //    yield return new WaitForSeconds(.1f);
+
+
+
+
+
+        //    // PrintName(hit.transform.gameObject);
+
+        //}
+
+
     }
 
-    public void CargarDatos()
+    public Vector3 CargarDatos()
     {
-        PlayerPrefs.GetFloat("PosicionX");
-        PlayerPrefs.GetFloat("PosicionY");
-        PlayerPrefs.GetFloat("PosicionZ");
+        Vector3 posicion;
+        posicion.x=PlayerPrefs.GetFloat("PosicionX");
+        posicion.y = PlayerPrefs.GetFloat("PosicionY");
+        posicion.z = PlayerPrefs.GetFloat("PosicionZ");
+        return posicion;
     }
 }
