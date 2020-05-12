@@ -3,7 +3,12 @@ guid: e292a7a80b78295468983c05abd786b8
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fogata_pCube18Mat
+    second: {fileID: 2100000, guid: 0ed70748afb7b414687a300d282e738d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
