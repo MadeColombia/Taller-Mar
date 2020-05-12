@@ -15,6 +15,7 @@ public class FileManager : MonoBehaviour
         fileName = "Palms.txt";
         myFilePath = Application.dataPath + "/" + fileName;
         ReadFromTheLine();
+     
     }
 
  
