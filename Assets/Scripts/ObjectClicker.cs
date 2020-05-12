@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectClicker : MonoBehaviour
 {
+ 
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) 
@@ -21,6 +23,7 @@ public class ObjectClicker : MonoBehaviour
             }
         }
     }
+
 
     public void PrintName(GameObject go)
     {
