@@ -47,9 +47,11 @@ public class FileManager : MonoBehaviour
 
             for (int j = 0; j < Locations.Length; j++)
             {
+                Vector3 L = new Vector3(Locations[j].x, Locations[j].y, Locations[j].z);
 
-                palms[j].transform.position = new Vector3(Locations[j].x, Locations[j].y, Locations[j].z);
+                palms[j].transform.position = L;
                 palms[j].SetActive(true);
+               // palms[j].scene.IsValid();
    
             }
 
