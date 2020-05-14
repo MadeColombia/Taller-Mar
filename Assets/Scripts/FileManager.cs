@@ -11,8 +11,10 @@ using System.IO;
 public class FileManager : MonoBehaviour
 {
 
-    public string[] palmsArray,Names;
+    public string[] Names;
     public Vector3[] Locations;
+    public GameObject[] palms ;
+
 
 
 
@@ -22,12 +24,7 @@ public class FileManager : MonoBehaviour
 
     void Start()
     {
-        
 
-
-
-
-        
         myFilePath = "./Palms.txt" ;
         
 
@@ -46,23 +43,33 @@ public class FileManager : MonoBehaviour
             float coord2 = float.Parse(coord[2]);
             Locations[i] = new Vector3(coord0, coord1, coord2);
             Debug.Log(Names[i] + " : " + Locations[i].ToString());
+
+
+            for (int j = 0; j < Locations.Length; j++)
+            {
+
+                palms[j].transform.position = new Vector3(Locations[j].x, Locations[j].y, Locations[j].z);
+                palms[j].SetActive(true);
+   
+            }
+
+
+
+
+
+
+
         }
 
+        
+
     }
-   
 
 
-
-    public void ReadFromTheLine()
+    void Update()
     {
-        palmsArray = File.ReadAllLines(myFilePath);
-        /*
-            foreach (string line in palmsArray) 
-            {
-                print(line); 
-            }
-        */
-        int randomNumber = Random.Range(0, palmsArray.Length);
-        print(palmsArray[randomNumber]);
+       
     }
+
+
 }
