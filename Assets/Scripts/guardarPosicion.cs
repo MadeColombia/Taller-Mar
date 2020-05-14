@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class guardarPosicion : MonoBehaviour
 {
     public float Posx, Posy, Posz;
-    public Text tx,tx2;
+    public Text tx,tx2,tx3;
     public GameObject panel;
     public List<Vector3> listaPos;
     Vector3 posPlayer;
@@ -43,6 +43,7 @@ public class guardarPosicion : MonoBehaviour
                     tx2.text = "(X: " + PlayerPrefs.GetFloat("PosicionX").ToString() + ", Y: " + PlayerPrefs.GetFloat("PosicionY").ToString() + ", Z: " + PlayerPrefs.GetFloat("PosicionZ").ToString() + ")";
                     tx.transform.gameObject.SetActive(true);
                     tx2.transform.gameObject.SetActive(true);
+                    tx3.transform.gameObject.SetActive(true);
                     panel.SetActive(true);
                     
 
@@ -62,6 +63,7 @@ public class guardarPosicion : MonoBehaviour
                      
                     tx.transform.gameObject.SetActive(false);
                     tx2.transform.gameObject.SetActive(false);
+                    tx3.transform.gameObject.SetActive(false);
                     panel.SetActive(false);
 
 
@@ -72,7 +74,7 @@ public class guardarPosicion : MonoBehaviour
     }
 
     
-
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -80,6 +82,7 @@ public class guardarPosicion : MonoBehaviour
             tx.transform.gameObject.SetActive(false);
             tx2.transform.gameObject.SetActive(false);
             panel.SetActive(false);
+            tx3.transform.gameObject.SetActive(false);
         }
     }
 
